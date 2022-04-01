@@ -15,7 +15,7 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node"]
+    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "@nuxtjs/device"]
   },
   "vueCompilerOptions": {
     "experimentalCompatMode": 2, // delete after migrating to vue3 (or nuxt3)

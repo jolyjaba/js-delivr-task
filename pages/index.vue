@@ -1,5 +1,5 @@
 <template>
-  <van-row class="full-height" gutter="20">
+  <van-row class="container" gutter="20">
     <van-search
       v-model="text"
       placeholder="Enter package name"
@@ -28,18 +28,19 @@
             <van-button size="mini" type="primary" text="More Info" />
           </template>
         </van-cell>
-        <van-pagination
-          v-model="currentPage"
-          class="my-20"
-          :total-items="getPackages.total"
-          :show-page-size="5"
-          prev-text="Prev"
-          next-text="Next"
-          :items-per-page="size"
-          force-ellipses
-          @change="onChangePage"
-        />
       </van-skeleton>
+      <van-pagination
+        v-if="getPackages.objects && getPackages.objects.length"
+        v-model="currentPage"
+        class="pagination"
+        :total-items="getPackages.total"
+        :show-page-size="$device.isDesktop ? 10 : 5"
+        prev-text="Prev"
+        next-text="Next"
+        :items-per-page="size"
+        force-ellipses
+        @change="onChangePage"
+      />
     </van-cell-group>
     <van-overlay :show="showMore" @click="closeModal">
       <BaseModal :more-content="moreContent" />
@@ -162,11 +163,11 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.full-height {
+.container {
   height: 100vh;
-}
-.my-20 {
-  margin: 16px 0;
+  max-width: 1440px;
+  margin: auto;
+  display: grid;
 }
 .wrapper {
   display: flex;
@@ -178,5 +179,9 @@ export default Vue.extend({
   width: 100%;
   max-width: 75%;
   background-color: #fff;
+}
+.pagination {
+  max-width: 720px;
+  margin: 16px auto;
 }
 </style>

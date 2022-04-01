@@ -33,6 +33,8 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
+    // https://github.com/nuxt-community/device-module
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
