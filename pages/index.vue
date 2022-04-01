@@ -45,6 +45,14 @@
     <van-overlay :show="showMore" @click="closeModal">
       <BaseModal :more-content="moreContent" />
     </van-overlay>
+    <van-cell-group inset>
+      <van-field label="Author" value="Daryn Nabidulla" readonly />
+      <van-field
+        label="Git"
+        value="https://github.com/jolyjaba/js-delivr-task"
+        readonly
+      />
+    </van-cell-group>
   </van-row>
 </template>
 
@@ -59,6 +67,7 @@ import {
   Empty,
   Row,
   Col,
+  Field,
   Divider,
   Button,
   Overlay,
@@ -103,6 +112,7 @@ const initMoreContent: INpmObject = {
 export default Vue.extend({
   name: 'IndexPage',
   components: {
+    [Field.name]: Field,
     [Overlay.name]: Overlay,
     [Button.name]: Button,
     [Row.name]: Row,
