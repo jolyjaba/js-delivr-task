@@ -42,49 +42,7 @@
       </van-skeleton>
     </van-cell-group>
     <van-overlay :show="showMore" @click="closeModal">
-      <div class="wrapper">
-        <div class="block" @click.stop>
-          <van-cell-group
-            :title="`More Info about (${moreContent.package.name} v${moreContent.package.version})`"
-          >
-            <van-cell
-              v-if="
-                moreContent.package.author && moreContent.package.author.name
-              "
-              title="Author"
-              :label="moreContent.package.author.name"
-            />
-            <van-cell
-              title="Bugs"
-              is-link
-              center
-              label="go to Github Issues"
-              :url="moreContent.package.links.bugs"
-            />
-            <van-cell
-              title="Homepage"
-              is-link
-              center
-              label="go to Homepage"
-              :url="moreContent.package.links.homepage"
-            />
-            <van-cell
-              title="Npm"
-              is-link
-              center
-              label="go to Npm Page"
-              :url="moreContent.package.links.npm"
-            />
-            <van-cell
-              title="Repository"
-              is-link
-              center
-              label="go to Official repository page"
-              :url="moreContent.package.links.repository"
-            />
-          </van-cell-group>
-        </div>
-      </div>
+      <BaseModal :more-content="moreContent" />
     </van-overlay>
   </van-row>
 </template>
@@ -109,6 +67,7 @@ import { debounce } from 'vue-debounce'
 import INpmObject from '~/types/INpmObject'
 import type INpmResponse from '~/types/INpmResponse'
 import IPaginationPayload from '~/types/IPaginationPayload'
+import BaseModal from '~/components/BaseModal.vue'
 
 const initMoreContent: INpmObject = {
   package: {
@@ -155,6 +114,7 @@ export default Vue.extend({
     [Skeleton.name]: Skeleton,
     [Empty.name]: Empty,
     [Divider.name]: Divider,
+    BaseModal,
   },
   data() {
     return {
@@ -201,7 +161,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .full-height {
   height: 100vh;
 }
