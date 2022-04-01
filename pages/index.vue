@@ -174,7 +174,6 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .container {
-  height: 100vh;
   max-width: 1440px;
   margin: auto;
   display: grid;
